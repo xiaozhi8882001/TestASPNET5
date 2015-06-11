@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using TestASPNET5.Models;
 
 namespace TestASPNET5.Controllers
 {
@@ -15,9 +16,15 @@ namespace TestASPNET5.Controllers
 
         public IActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "ASP.NET 5 Rocks!";
+            ViewBag.appName = "测试ASP.NET 5 应用";
+            var serverInfo = new ServerInfo
+            {
+                Name = Environment.MachineName,
+                Software = Environment.OSVersion.ToString(),
+            };
 
-            return View();
+            return View(serverInfo);
         }
 
         public IActionResult Contact()
